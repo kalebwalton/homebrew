@@ -30,12 +30,12 @@ module Homebrew
     def homebrew_owner
       if defined?(Chef::Mixin::HomebrewUser)
         begin
-          @homebrew_owner ||= Chef12HomebrewUser.new.find_homebrew_uid
+          @homebrew_owner ||= Chef12HomebrewUser.new.find_homebrew_uid.to_s
         rescue Chef::Exceptions::CannotDetermineHomebrewOwner
-          @homebrew_owner ||= calculate_owner
+          @homebrew_owner ||= calculate_owner.to_s
         end
       else
-        @homebrew_owner ||= calculate_owner
+        @homebrew_owner ||= calculate_owner.to_s
       end
     end
 
